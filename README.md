@@ -1,11 +1,11 @@
 # BeginnerToAdvancedAutomation
 Here is written the beginner to advanced level automation script using java and written. For selenium, we will use java but playwright will be implemented using python. 
 
-## SetUp ChromeDrive
+### SetUp ChromeDrive
 ```
 WebDriverManager.chromedriver().setup();
 ```
-## Using Get, load the webpage
+### Using Get, load the webpage
 
 ```
 static WebDriver driver;
@@ -14,7 +14,7 @@ driver = new ChromeDriver();
         Thread.sleep(2000);
 ```
 
-## search to the google
+### search to the google
 ```
 driver.findElement(By.name("btnK")).click();
 ```
