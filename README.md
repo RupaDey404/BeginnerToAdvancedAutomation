@@ -28,14 +28,34 @@ it does not work until showing the searching button. that's why we will use `Wai
 ```
 
 ### Form filling for the demo site `https://demoqa.com/automation-practice-form` 
-Using annotation @Test to fill the first name and last name.
+Using annotation @Test to fill the first name, last name and email.
 1. Using `WebElement` for locating the path
 ```
         WebElement firstName = driver.findElement(By.xpath(FormTestData.f_name_path));
         WebElement lastName = driver.findElement(By.xpath(FormTestData.l_name_path));
+        WebElement email = driver.findElement(By.xpath(FormTestData.email_path));
+               
 ```
 and `testData_file` path locator is used for firstname and last name path.
 ```
         public static final String f_name_path = "//input[@id='firstName']";
         public static final String l_name_path = "//input[@id='lastName']";
+        public static final String email_path = "//input[@id='userEmail']";
+
 ```
+2. Using `Action class` for performing complex mouse, keyboard operation where normal click can not perform. Here can be used .perform() when you build a sequence of actions (click, move, drag, key press, etc.) and want to execute them.
+```
+Actions actions = new Actions(driver);
+actions.moveToElement(firstName).click().perform();
+firstName.sendKeys("Rupa");
+Thread.sleep(1000);
+
+actions.moveToElement(lastName).click().perform();
+lastName.sendKeys("Dey");
+Thread.sleep(2000);
+
+actions.moveToElement(email).click().perform();
+email.sendKeys("rupa@gmail.com");
+Thread.sleep(2000);
+```
+`moveToElement` is used for ensuring that mouse moves to that specific element. For writing the firstname, lastname, email is used `sendKeys`. `Thread.sleep` is the pause when executing the code for visibility the form filling.
