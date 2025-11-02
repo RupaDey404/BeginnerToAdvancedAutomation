@@ -59,3 +59,15 @@ email.sendKeys("rupa@gmail.com");
 Thread.sleep(2000);
 ```
 `moveToElement` is used for ensuring that mouse moves to that specific element. For writing the firstname, lastname, email is used `sendKeys`. `Thread.sleep` is the pause when executing the code for visibility the form filling.
+
+3. `radio-button` click: when we select gender then needs to click the radio button.
+```
+WebElement radio1 = driver.findElement(By.xpath(FormTestData.male_radio));
+radio1.click();
+Thread.sleep(2000);
+
+WebElement radio2 = driver.findElement(By.xpath(FormTestData.female_radio));
+radio2.click();
+Thread.sleep(2000);
+```
+when we go to the form link here is found the radio button.
