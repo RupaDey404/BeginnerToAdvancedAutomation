@@ -26,3 +26,16 @@ it does not work until showing the searching button. that's why we will use `Wai
        // Thread.sleep(2000);
         searchbox.click();
 ```
+
+### Form filling for the demo site `https://demoqa.com/automation-practice-form` 
+Using annotation @Test to fill the first name and last name.
+1. Using `WebElement` for locating the path
+```
+        WebElement firstName = driver.findElement(By.xpath(FormTestData.f_name_path));
+        WebElement lastName = driver.findElement(By.xpath(FormTestData.l_name_path));
+```
+and `testData_file` path locator is used for firstname and last name path.
+```
+        public static final String f_name_path = "//input[@id='firstName']";
+        public static final String l_name_path = "//input[@id='lastName']";
+```
