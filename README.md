@@ -71,3 +71,11 @@ radio2.click();
 Thread.sleep(2000);
 ```
 when we go to the form link here is found the radio button.
+
+4. `mobile no` is added in the form
+```
+WebElement mobileN = driver.findElement(By.xpath(FormTestData.mobileN_path));
+actions.moveToElement(mobileN).click().perform();
+mobileN.sendKeys("1239873");
+Thread.sleep(1000);
+```
