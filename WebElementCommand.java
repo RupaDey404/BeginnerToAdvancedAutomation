@@ -26,10 +26,17 @@ public class WebElementCommand {
        Thread.sleep(500);
         driver.navigate().to("https://demoqa.com/text-box");
         WebElement username = driver.findElement(By.xpath("//input[@id='userName']"));
+        String userGetText = username.getText();
+        System.out.println("Userid get text: " +userGetText); //it shows empty string because it has no opening and closing tag
+
+        String userGetTag = username.getTagName();
+        System.out.println("userGet tag name: " +userGetTag);
         username.click();
         Thread.sleep(500);
         username.sendKeys("Rupa");
         Thread.sleep(500);
+
+
 
         WebElement email = driver.findElement(By.xpath("//input[@id='userEmail']"));
         email.click();
@@ -74,6 +81,10 @@ public class WebElementCommand {
         submitBtn.submit();
         Thread.sleep(1000);
         System.out.println("submitted data is submitted successfully");
+
+        String attValue = submitBtn.getAttribute("xpath");
+        System.out.println("get  attribute: " +attValue);
+
        driver.quit();
     }
 }
