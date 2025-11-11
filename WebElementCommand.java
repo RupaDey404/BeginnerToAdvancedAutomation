@@ -2,11 +2,14 @@ package BeginnerToAdvancedAutomation;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.security.Key;
 
 public class WebElementCommand {
     static WebDriver driver;
@@ -45,12 +48,32 @@ public class WebElementCommand {
 
         WebElement submitBtn = driver.findElement(By.xpath("//button[@id='submit']"));
         submitBtn.click();
+//
         Thread.sleep(1000);
 
-        System.out.println("submitted data successfully");
+        System.out.println("submitted data has clicked successfully");
 
-        boolean status = username.isDisplayed();
-        System.out.println(status);
+        boolean statusUser = username.isDisplayed();
+        System.out.println(statusUser);
+
+        boolean stsEnableUser = username.isEnabled();
+        System.out.println(stsEnableUser);
+        if (stsEnableUser){
+            username.sendKeys(Keys.CONTROL +  "a" + Keys.DELETE);
+            username.sendKeys("Lima Traders");
+            Thread.sleep(2000);
+        }
+        boolean selectedUser = username.isSelected(); //isSelected is applied for checkbox, radio button and select option
+        System.out.println(selectedUser);
+
+        if (selectedUser){
+           username.sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
+           username.sendKeys("Appex Company");
+           Thread.sleep(2000);
+        }
+        submitBtn.submit();
+        Thread.sleep(1000);
+        System.out.println("submitted data is submitted successfully");
        driver.quit();
     }
 }
