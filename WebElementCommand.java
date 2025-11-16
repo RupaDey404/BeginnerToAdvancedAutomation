@@ -6,13 +6,20 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.security.Key;
+import java.time.Duration;
 
 public class WebElementCommand {
     static WebDriver driver;
+    static WebDriverWait wait;
+    String url = "https://demoqa.com";
+    String url1 = "https://demoqa.com/automation-practice-form";
     @BeforeMethod
     void initBrowser(){
         WebDriverManager.chromedriver().setup();
@@ -21,7 +28,7 @@ public class WebElementCommand {
 
     @Test
     void WebElementCommand1() throws InterruptedException{
-       String url = "https://demoqa.com";
+
        driver.get(url);
        Thread.sleep(500);
         driver.navigate().to("https://demoqa.com/text-box");
@@ -89,19 +96,45 @@ public class WebElementCommand {
         Thread.sleep(1000);
         System.out.println("submitted data is submitted successfully");
 
-       driver.quit();
+
     }
 
     @Test
     void findElement() throws InterruptedException{
-        String url = "https://demoqa.com/";
+        //String url = "https://demoqa.com/";
         driver.get(url);
         Thread.sleep(500);
-        driver.navigate().to("https://demoqa.com/automation-practice-form");
+        driver.navigate().to(url1);
         WebElement element = driver.findElement(By.xpath("//label[@for='gender-radio-2']"));
         element.click();
         Thread.sleep(2000);
-        System.out.println("succesfully clicked");
+        System.out.println("successfully clicked");
+    }
+
+    @Test
+    void handleCheckBox() throws InterruptedException{
+        driver.get(url);
+        Thread.sleep(500);
+        driver.navigate().to(url1);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebElement element = driver.findElement(
+                By.xpath("//label[@for='hobbies-checkbox-1']"
+
+                ));
+
+        element.click();
+        Thread.sleep(2000);
+
+        WebElement element1 = driver.findElement(
+                By.xpath("//label[text()='Music']"
+
+                ));
+
+        element1.click();
+        Thread.sleep(2000);
+    }
+    @AfterMethod
+    void closeDriver(){
         driver.quit();
     }
 }
