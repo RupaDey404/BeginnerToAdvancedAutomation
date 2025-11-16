@@ -125,12 +125,27 @@ public class WebElementCommand {
         element.click();
         Thread.sleep(2000);
 
+        WebElement element0 = driver.findElement(
+                By.cssSelector("label[for='hobbies-checkbox-2']"
+
+                ));
+
+        element0.click();
+        Thread.sleep(2000);
+
         WebElement element1 = driver.findElement(
                 By.xpath("//label[text()='Music']"
 
                 ));
 
-        element1.click();
+        boolean isSelected = element1.isSelected();
+        System.out.println("element1 is selected before click: "+isSelected);
+        if (!isSelected) {
+            element1.click();
+
+            isSelected = true;
+        }
+        System.out.println("element1 is selected after click: "+isSelected);
         Thread.sleep(2000);
     }
     @AfterMethod
