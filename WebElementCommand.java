@@ -78,13 +78,30 @@ public class WebElementCommand {
            username.sendKeys("Appex Company");
            Thread.sleep(2000);
         }
-        submitBtn.submit();
-        Thread.sleep(1000);
-        System.out.println("submitted data is submitted successfully");
+
+        String submitB_css = username.getCssValue("background-color");
+        System.out.println("submit button color:" +submitB_css);
 
         String attValue = submitBtn.getAttribute("xpath");
         System.out.println("get  attribute: " +attValue);
 
+        submitBtn.submit();
+        Thread.sleep(1000);
+        System.out.println("submitted data is submitted successfully");
+
        driver.quit();
+    }
+
+    @Test
+    void findElement() throws InterruptedException{
+        String url = "https://demoqa.com/";
+        driver.get(url);
+        Thread.sleep(500);
+        driver.navigate().to("https://demoqa.com/automation-practice-form");
+        WebElement element = driver.findElement(By.xpath("//label[@for='gender-radio-2']"));
+        element.click();
+        Thread.sleep(2000);
+        System.out.println("succesfully clicked");
+        driver.quit();
     }
 }
