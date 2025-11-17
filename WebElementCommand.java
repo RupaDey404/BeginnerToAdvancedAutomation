@@ -101,12 +101,16 @@ public class WebElementCommand {
 
     @Test
     void findElement() throws InterruptedException{
+        //radio button -> it will select anyone
         //String url = "https://demoqa.com/";
         driver.get(url);
         Thread.sleep(500);
         driver.navigate().to(url1);
-        WebElement element = driver.findElement(By.xpath("//label[@for='gender-radio-2']"));
-        element.click();
+        WebElement radioBtn1 = driver.findElement(By.xpath("//label[@for='gender-radio-2']"));
+        radioBtn1.click();
+        Thread.sleep(2000);
+        WebElement radioBtn2 = driver.findElement(By.xpath("//label[@for='gender-radio-1']"));
+        radioBtn2.click();
         Thread.sleep(2000);
         System.out.println("successfully clicked");
     }
@@ -157,8 +161,10 @@ public class WebElementCommand {
 
 
     }
+
     @AfterMethod
     void closeDriver(){
         driver.quit();
     }
+
 }
