@@ -139,7 +139,11 @@ public class WebElementCommand {
                 ));
 
         boolean isSelected = element1.isSelected();
+        boolean isEnable = element1.isEnabled(); // check the clickability not for selection
+        boolean isDisplayed = element1.isDisplayed();
         System.out.println("element1 is selected before click: "+isSelected);
+        System.out.println("element1 is enabled before click:" + isEnable);
+        System.out.println("element1 is displayed: "+isDisplayed);
         if (!isSelected) {
             element1.click();
 
@@ -147,6 +151,11 @@ public class WebElementCommand {
         }
         System.out.println("element1 is selected after click: "+isSelected);
         Thread.sleep(2000);
+
+
+        System.out.println("element1 is enabled after click:" + isEnable);
+
+
     }
     @AfterMethod
     void closeDriver(){
